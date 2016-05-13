@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Excel = Microsoft.Office.Interop.Excel;
+using System.Text.RegularExpressions;
+
 
 namespace ConsoleApplication1
 {
@@ -16,9 +18,16 @@ namespace ConsoleApplication1
             //           Console.WriteLine(Rulebook.CheckRebarArea());
             //           Console.WriteLine(Sources.beam);
             //           Console.WriteLine(Sources.GetRebarAreaByNumberAndDiameter("8H25"));
-            Console.WriteLine(Sources.ExtractRebarLayers("8H12 - 200(B)+5H10+5H16-200+8H16+5H25-200(B)+8H32-300+10H40+2H32+4H25-400(B)"));
-            Console.WriteLine(Sources.RebarDescriptions("10H40+2H32+4H25-400(B)") + "\n" + "\n");
-            Console.WriteLine(Sources.BeamMarkDescriptions("10B020aPT"));
+            string input = "";
+            while (input != "exit")
+            {
+                input = Console.ReadLine();
+                if (input == "exit") { break; }
+                else {
+                    //Match match = Regex.Match(input, "[0-9]{1,}[H][0-9]{1,}[-]{0,1}[0-9]{0,}[(]{0,1}[B|H]{0,1}[)]{0,1}");
+                    Console.WriteLine(Sources.RebarDescriptions(input));
+                }
+            }
             //            Console.WriteLine(Sources.DecodeRebarMark("99H12-200(B)+5H7+6H7 - 200"));
             //           Console.WriteLine(Sources.beam);
         }

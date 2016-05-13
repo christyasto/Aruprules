@@ -134,7 +134,7 @@ namespace ConsoleApplication1
                 }
                 return layers;
             }
-            else return "input unrecognized.";
+            else return "Rebar cannot be recognized.";
 
         }
 
@@ -155,43 +155,60 @@ namespace ConsoleApplication1
         public static string RebarDescriptions(string mark)
         {
             string fixedmark = fixstr(mark);
-            MatchCollection match = Regex.Matches(fixedmark, "([0-9]{0,})([H])([0-9]{0,})([-]{0,1})([0-9]{0,})([(][B|H][)]){0,1}");
-
-            double multiplier = 1;
-            string bundle = "";
-            if (match[match.Count - 1].Groups[6].Value.IndexOf("(B)") != -1) { multiplier = 2; bundle = " (B)"; }
-            else if (match[match.Count - 1].Groups[6].Value.IndexOf("(H)") != -1) { bundle = " (H)"; }
-
-            Dictionary<string, List<string>> data = new Dictionary<string, List<string>>();
-
-            string layers = "";
-            layers += "---------- " + $"Descriptions of {mark}" + " ----------" + "\n";
-
-
-            layers += "\n" + "Number of bar types ".PadRight(20) + "= " + match.Count + "\n"
-                + "Spacing ".PadRight(20) + "= " + match[match.Count - 1].Groups[5].Value + "\n" + "\n";
-            for (int layer = 0; layer < match.Count; layer++)
+            MatchCollection match = Regex.Matches(fixedmark, "([0-9]{1,})([H])([0-9]{1,})([-]{0,1})([0-9]{0,})([(][B|H][)]){0,1}");
+            int checker = 0;
+            if (match.Count == 0) { checker = 1; }
+            else
             {
-                List<string> subdata = new List<string>();
-
-                Double NoBar = Convert.ToDouble(match[layer].Groups[1].Value) * multiplier;
-                Double diam = Convert.ToDouble(match[layer].Groups[3].Value);
-                Double area = GetRebarAreaByNumberAndDiameter(match[layer].Groups[0].Value) * multiplier;
-
-                //subdata.Add();
-
-                layers += $"Bar Type {layer + 1}".PadRight(4) + ": " + (match[layer].Groups[1].Value + match[layer].Groups[2].Value
-                    + match[layer].Groups[3].Value + bundle).PadRight(10) + "_______________" + "\n"
-                    + "   |                                 |" + "\n"
-                    + "   | Number of bars = " + Convert.ToString(NoBar).PadRight(15) + "|" + "\n"
-                    + "   | Diameter       = " + (diam + " mm").PadRight(15) + "|" + "\n"
-                    + "   | Total Area     = " + (area + " mm2").PadRight(15) + "|" + "\n"
-                    + "   |_________________________________|" + "\n" + "\n";
-
+                for (int check = 0; check < match.Count; check++)
+                {
+                    if (match[check].Success) {; }
+                    else { checker = 1; }
+                }
             }
+            if (checker == 0)
+            {
+                double multiplier = 1;
+                string bundle = "";
+                if (match[match.Count - 1].Groups[6].Value.IndexOf("(B)") != -1) { multiplier = 2; bundle = " (B)"; }
+                else if (match[match.Count - 1].Groups[6].Value.IndexOf("(H)") != -1) { bundle = " (H)"; }
 
-            layers += "-----------------------------end-----------------------------";
-            return layers;
+                //Dictionary<string, List<string>> data = new Dictionary<string, List<string>>();
+
+                string layers = "";
+                layers += "---------- " + $"Descriptions of {mark}" + " ----------" + "\n";
+                string spacing = match[match.Count - 1].Groups[5].Value;
+                if (match[match.Count - 1].Groups[5].Value == "")
+                {
+                    spacing = "Undefined";
+                }
+                layers += "\n" + "Number of bar types ".PadRight(20) + "= " + match.Count + "\n"
+                    + "Spacing ".PadRight(20) + "= " + spacing + "\n" + "\n";
+                for (int layer = 0; layer < match.Count; layer++)
+                {
+                    //List<string> subdata = new List<string>();
+
+                    Double NoBar = Convert.ToDouble(match[layer].Groups[1].Value) * multiplier;
+                    Double diam = Convert.ToDouble(match[layer].Groups[3].Value);
+                    Double area = GetRebarAreaByNumberAndDiameter(match[layer].Groups[0].Value) * multiplier;
+
+                    //subdata.Add();
+
+                    layers += $"Bar Type {layer + 1}".PadRight(4) + ": " + (match[layer].Groups[1].Value + match[layer].Groups[2].Value
+                        + match[layer].Groups[3].Value + bundle).PadRight(10) + "_______________" + "\n"
+                        + "   |                                 |" + "\n"
+                        + "   | Number of bars = " + Convert.ToString(NoBar).PadRight(15) + "|" + "\n"
+                        + "   | Diameter       = " + (diam + " mm").PadRight(15) + "|" + "\n"
+                        + "   | Total Area     = " + (area + " mm2").PadRight(15) + "|" + "\n"
+                        + "   |_________________________________|" + "\n" + "\n";
+
+                }
+
+                layers += "-----------------------------end-----------------------------";
+                return layers;
+            }
+            else return "Rebar cannot be recognized.";
+
         }
 
         public static string BeamMarkDescriptions(string mark)

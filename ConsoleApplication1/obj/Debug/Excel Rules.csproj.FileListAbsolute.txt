@@ -19,3 +19,10 @@ C:\Users\Chris.Pambudi\Downloads\Excel Plugin C#\ConsoleApplication1\obj\Debug\C
 C:\Users\Chris.Pambudi\Downloads\Excel Plugin C#\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
 C:\Users\Chris.Pambudi\Downloads\Excel Plugin C#\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
 C:\Users\Chris.Pambudi\Downloads\Excel Plugin C#\ConsoleApplication1\obj\Debug\Excel Rules.csprojResolveAssemblyReference.cache
+D:\Documents\ARUP\C# Programs\C#\Aruprules-master\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+D:\Documents\ARUP\C# Programs\C#\Aruprules-master\ConsoleApplication1\obj\Debug\Excel Rules.csproj.ResolveComReference.cache
+D:\Documents\ARUP\C# Programs\C#\Aruprules-master\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+D:\Documents\ARUP\C# Programs\C#\Aruprules-master\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+D:\Documents\ARUP\C# Programs\C#\Aruprules-master\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+D:\Documents\ARUP\C# Programs\C#\Aruprules-master\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+D:\Documents\ARUP\C# Programs\C#\Aruprules-master\ConsoleApplication1\obj\Debug\Excel Rules.csprojResolveAssemblyReference.cache
