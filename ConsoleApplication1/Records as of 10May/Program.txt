@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Excel = Microsoft.Office.Interop.Excel;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Console.WriteLine(Rulebook.CheckRequiredFields());
+            Console.WriteLine(Rulebook.CheckConsistencyWithRevit());
+            Console.WriteLine(Rulebook.CheckRebarArea());
+            Sources.GetRebarAreaByNumberAndDiameter("20H32+15H32");
+        }
+    }
+}

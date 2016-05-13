@@ -1,0 +1,119 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Excel = Microsoft.Office.Interop.Excel;
+using System.Text.RegularExpressions;
+
+namespace ConsoleApplication1
+{
+    class Sources
+    {
+        public static string GetDefinition(string beamType, int colNum)
+        {
+            string detailBeamTypes = "L_End (R)"; //----------------------------------------------- Change into range in excel
+            string rebarLocations = "1"; //----------------------------------------------- Change into range in excel
+            int i = 1;
+            while (i <= 13)
+            {
+                if (detailBeamTypes == beamType)
+                {
+                    return rebarLocations; //---------------------------------------------Change into range in excel
+                }
+                i++;
+            }
+            return null;
+        }
+
+        public static double GetMinRebarArea(double A_c)
+        {
+            double f_ctm = 0.0, f_yk, f_ck, f_cm, area1, area2;
+            f_ck = 50.0; //--------------------------------------------------------Change into values from excel
+            f_yk = 500.0; //--------------------------------------------------------Change into values from excel
+
+            if (f_ck <= 50)
+            {
+                f_ctm = 0.3 * Math.Pow(f_ck, (2.0 / 3.0));
+            }
+            else
+            {
+                // The formula 2.12 * ln (1+(f_cm/10)) is not implemented for now
+            }
+            area1 = .0013 * A_c;
+            area2 = .26 * f_ctm * A_c / f_yk;
+
+            if (area1 > area2) { return area1; }
+            else return area2;
+        }
+
+        public static double GetBeamDepth(string section)
+        {
+            int indexOfLastSlash = section.LastIndexOf("/");
+            int indexOfX = section.IndexOf("x");
+
+            if (indexOfLastSlash > 0)
+            {
+                string result = section.Substring(indexOfLastSlash + 1, indexOfX - indexOfLastSlash - 2);
+                return Convert.ToDouble(result);
+            }
+            else
+            {
+                string result = section.Substring(0, indexOfX - 1);
+                return Convert.ToDouble(result);
+            }
+        }
+
+        public static double GetBeamWidth(string section)
+        {
+            int indexOfX = section.IndexOf("x");
+            if (indexOfX > 0)
+            {
+                string result = section.Substring(indexOfX + 1, section.Length - indexOfX - 1);
+                return Convert.ToDouble(result);
+            }
+            else return 0.0;
+        }
+
+        public static string LastRow()      //--------------------------------------------Change into int type
+        {
+            return null;                    //-------------------------------------------- change into a code that extracts the used range
+        }
+
+        public static double GetRebarAreaByNumberAndDiameter(string numberAndDiameter)      //-----------------------------------STILL VERY BUGGY--------------------//
+        {
+            Match match1 = Regex.Match(numberAndDiameter, "(^[0-9]{1,2})([H])([0-9]{1,2})([+])([0-9]{1,2})([H])([0-9]{1,2})([/D]{0,2})([/D/w]{0,6})");
+            Match match2 = Regex.Match(numberAndDiameter, "(^[0-9]{1,2})([H])([0-9]{1,2})([/D]{0,2})([/D/w]{0,6})");
+            if (match1.Success)
+            {
+                int numRebar1 = Convert.ToInt32(match1.Groups[1].Value);
+                string diameter1 = match1.Groups[3].Value;
+                int numRebar2 = Convert.ToInt32(match1.Groups[5].Value);
+                string diameter2 = match1.Groups[7].Value;
+                double unitArea1 = GetRebarAreaByDiameter(diameter1);
+                double unitArea2 = GetRebarAreaByDiameter(diameter2);
+
+                return numRebar1 * unitArea1 + numRebar2 * unitArea2;
+            }
+            else if (match2.Success)
+            {
+                int numRebar = Convert.ToInt32(match2.Groups[1].Value);
+                string diameter = match2.Groups[3].Value;
+                double unitArea = GetRebarAreaByDiameter(diameter);
+
+                return numRebar * unitArea;
+            }
+            else return 0;
+        }
+
+        public static double GetRebarAreaByDiameter(string diameter)
+        {
+            Dictionary<string, double> constants = new Dictionary<string, double>();
+            constants.Add("8", 50.0); constants.Add("10", 79.0); constants.Add("13", 133.0); constants.Add("16", 201.0);
+            constants.Add("20", 413.0); constants.Add("25", 491.0); constants.Add("32", 804.0); constants.Add("40", 1257.0);
+
+            return constants[diameter];
+        }
+
+    }
+}

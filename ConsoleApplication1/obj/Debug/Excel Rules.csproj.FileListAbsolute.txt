@@ -1,0 +1,21 @@
+D:\Documents\ARUP\Openexcel\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+D:\Documents\ARUP\Openexcel\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+D:\Documents\ARUP\Openexcel\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+D:\Documents\ARUP\Openexcel\ConsoleApplication1\ConsoleApplication1\obj\Debug\Excel Rules.csproj.ResolveComReference.cache
+D:\Documents\ARUP\Openexcel\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+D:\Documents\ARUP\Openexcel\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+D:\Documents\ARUP\Openexcel\ConsoleApplication1\ConsoleApplication1\obj\Debug\Excel Rules.csprojResolveAssemblyReference.cache
+D:\Documents\ARUP\C# Programs\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+D:\Documents\ARUP\C# Programs\ConsoleApplication1\ConsoleApplication1\obj\Debug\Excel Rules.csproj.ResolveComReference.cache
+D:\Documents\ARUP\C# Programs\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+D:\Documents\ARUP\C# Programs\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+D:\Documents\ARUP\C# Programs\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+D:\Documents\ARUP\C# Programs\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+D:\Documents\ARUP\C# Programs\ConsoleApplication1\ConsoleApplication1\obj\Debug\Excel Rules.csprojResolveAssemblyReference.cache
+C:\Users\Chris.Pambudi\Downloads\Excel Plugin C#\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\Chris.Pambudi\Downloads\Excel Plugin C#\ConsoleApplication1\obj\Debug\Excel Rules.csproj.ResolveComReference.cache
+C:\Users\Chris.Pambudi\Downloads\Excel Plugin C#\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\Chris.Pambudi\Downloads\Excel Plugin C#\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb
+C:\Users\Chris.Pambudi\Downloads\Excel Plugin C#\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\Chris.Pambudi\Downloads\Excel Plugin C#\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\Chris.Pambudi\Downloads\Excel Plugin C#\ConsoleApplication1\obj\Debug\Excel Rules.csprojResolveAssemblyReference.cache
